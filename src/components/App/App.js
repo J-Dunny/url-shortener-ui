@@ -18,13 +18,14 @@ export class App extends Component {
 
   getRequest = () => {
     getUrls()
-    .then(data => this.setState({urls: data.urls}))
+    .then(data => this.setState({urls: [...this.state.urls, ...data.urls]}))
   }
 
   addUrl = (newUrl) => {
     // this.setState({urls: [this.state.urls, newUrl]})
     postUrls(newUrl)
-    .then(this.getRequest())
+    .then(data => this.setState({urls: [...this.state.urls, data]}))
+    // .then(this.getRequest())
   }
 
   render() {

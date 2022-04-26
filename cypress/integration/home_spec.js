@@ -41,12 +41,15 @@ describe("Home page display and userflow", () => {
     })
 
     it("Should correctly add new short URL to dom and POST data", () => {
+        
         cy.visit('http://localhost:3000/')
         .get('input[name="title"]').type('Amazing').should("have.value", 'Amazing' )
+        
+    
         .get('input[name="long_url"]').type('https://images.unsplash.com/photo-1531898418865-480b7090470f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80').should("have.value", 'https://images.unsplash.com/photo-1531898418865-480b7090470f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80' )
         cy.intercept('POST', "http://localhost:3001/api/v1/urls", 
         
-            {   id: 2, 
+            {   id: 25, 
                 long_url: 'https://images.unsplash.com/photo-1531898418865-480b7090470f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80', 
                 short_url: 'http://localhost:3001/useshorturl/1', 
                 title: 'Awesome photo 2'
@@ -54,7 +57,7 @@ describe("Home page display and userflow", () => {
         
         ).as("post-urls")
         .get('button').click()
-        cy.wait('@post-urls').then(console.log)
+        cy.wait('@post-urls')
         
         
     })

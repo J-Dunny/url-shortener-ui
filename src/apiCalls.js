@@ -10,7 +10,7 @@ const postUrls = (newUrl) => {
     body: JSON.stringify(newUrl)
   })
     .then(response => {
-      (console.log(response))
+      (console.log('post',response))
       return response.json()})
 }
 
