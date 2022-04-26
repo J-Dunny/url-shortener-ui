@@ -61,7 +61,6 @@ describe("Home page display and userflow", () => {
         .get('.url').contains("http://localhost:3001/useshorturl/13453454")
         .get('.url').contains("https://images.unsplash.com/photo-1531898418865-480b7090470f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=803452345324")
         
-        
     })
 
 
