@@ -3,7 +3,7 @@ import './UrlContainer.css';
 
 const UrlContainer = (props) => {
   let urlEls;
-  if(props.urls[0]){
+  if(props.urls){
     urlEls = props.urls.map(url => {
       console.log("url", url)
       return (
