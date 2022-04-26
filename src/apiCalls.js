@@ -1,6 +1,13 @@
 const getUrls = () => {
   return fetch('http://localhost:3001/api/v1/urls')
-    .then(response => response.json())
+    .then(response => {
+      if (response.status === 400){
+        throw new Error("404:Not Found")
+      } else if (response.status === 500){
+        throw new Error("500: Server is having issues")
+      }
+      return response.json()
+    })
 }
 
 const postUrls = (newUrl) => {
@@ -9,9 +16,14 @@ const postUrls = (newUrl) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(newUrl)
   })
-    .then(response => {
-      (console.log('post',response))
-      return response.json()})
+  .then(response => {
+    if (response.status === 400){
+      throw new Error("404:Not Found")
+    } else if (response.status === 500){
+      throw new Error("500: Server is having issues")
+    }
+    return response.json()
+  })
 }
 
 
