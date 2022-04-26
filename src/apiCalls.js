@@ -9,7 +9,9 @@ const postUrls = (newUrl) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(newUrl)
   })
-    .then(response => response.json())
+    .then(response => {
+      (console.log(response))
+      return response.json()})
 }
 
 

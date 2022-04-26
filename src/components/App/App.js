@@ -28,7 +28,7 @@ export class App extends Component {
   }
 
   render() {
-    console.log("state",this.state.urls)
+    
     return (
       <main className="App">
         <header>
